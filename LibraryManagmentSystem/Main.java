@@ -1,32 +1,22 @@
 public class Main {
     
-    public static void main(String [] args){
+    public static void main(String[] args){
 
         Library library = new Library();
 
-        Book b1 = new Book(
-            101,
-            "Java Programming",
-            "Lalu Yadav"
-        );
+        Book b1 = new Book(101,"Java programming ","Deepak sir");
+        Book b2 = new Book(102,"DSA","hitesh panchal");
+        Book b3 = new Book(103,"DBMA","archana");
 
-        Book b2= new Book(
-            102,
-            "Data Strucuter",
-            "Hitesh panchal"
-        );
+        library.addBook(b1);
+        library.addBook(b2);
+System.out.println("------------------------------");
+        library.displayBooks();
+System.out.println("------------------------------");
 
-        Book b3 =
-                new Book(
-                        103,
-                        "Clean Code",
-                        "Robert Martin"
-                );
+        System.out.println();
 
-                library.addBook(b1);
-                library.addBook(b2);
-                library.addBook(b3);
-
-                library.displayBooks();
+        library.issueBook(102);
+        System.out.println();
     }
 }

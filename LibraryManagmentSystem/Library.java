@@ -1,67 +1,98 @@
-
-import java.util.ArrayList;
+import java.util.*;
 
 public class Library {
 
     private ArrayList<Book> books;
 
     public Library() {
+
         books = new ArrayList<>();
 
     }
 
-    public void addBook(Book book) {
+    // Add book
+
+    public void addBook(Book book){
 
         books.add(book);
         System.out.println(
-                book.getTitle() + "added successfully:)");
+            book.getTitle() + " added successfullly " + " and the "+ "Author name is " + book.getAuthor()
+            
+
+        );
+
+
     }
+    // Display Books
 
-    public void displayBooks(){
+    public void displayBooks() {
 
-        if(books.isEmpty()){
-            System.out.println("Books are not available");
+        if (books.isEmpty()) {
+            System.out.println("No books are available");
+
             return;
         }
 
-        for(Book book : books){
+        for (Book book : books) {
             book.displayBook();
         }
     }
 
-    public Book searchBook(int bookId){
+    // Search Book
 
-        for(Book book : books){
-            if(book.getBookId()==bookId){
+    public Book searchBook(int bookId) {
+
+        for (Book book : books) {
+
+            if (books.isEmpty()) {
+                System.out.println("Books are not available");
+                return null;
+            } else if (book.getBookId() == bookId) {
+
                 return book;
+
             }
-        }
 
+        }
         return null;
+
     }
 
-    public void issueBook(int bookId){
-        
+    // issue book
+
+    public void issueBook(int bookId) {
+
         Book book = searchBook(bookId);
 
-        if(book == null){
+        if (book == null) {
             System.out.println("Book not found");
             return;
         }
+
         book.setIssued(true);
-        System.out.println(book.getTitle() + "issued successfully:)");
+
+        System.out.println("Book issued successfullly");
 
     }
 
-    public void returnBook(int bookId){
+    // return book
+
+    public void returnBook(int bookId) {
+
         Book book = searchBook(bookId);
 
-        if(book == null){
+        if (book == null) {
             System.out.println("Book not found");
             return;
+        } else if (!book.isIssued()) {
+            System.out.println("Book is alreay available");
+            return;
+
         }
         book.setIssued(false);
-        System.out.println(book.getTitle() + "returned successfully:)");
+
+        System.out.println("Book returned successfully");
+
     }
 
 }
